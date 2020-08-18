@@ -37,28 +37,27 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(32.0),
-          border: Border.all(color: Colors.blueGrey),
-          color: Colors.transparent
-        ),
-        child: TextField(
-          controller: _textEditingController,
-          textAlign: TextAlign.left,
-          decoration: InputDecoration(
-            prefixIcon: Icon(Icons.search),
-            suffixIcon: IconButton(
-              onPressed: () => _textEditingController.clear(),
-              icon: Icon(Icons.clear),
-            ),
-            border: InputBorder.none,
-            hintText: 'Search for symbols and companies...',
+    return Container(
+      height: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.0),
+        color: Colors.white30
+      ),
+      child: TextField(
+        style: TextStyle(color: Colors.white),
+        controller: _textEditingController,
+        textAlign: TextAlign.left,
+        decoration: InputDecoration(
+          hintStyle: TextStyle(color: Colors.white70),
+          prefixIcon: Icon(Icons.search, color: Colors.white70),
+          suffixIcon: IconButton(
+            onPressed: () => _textEditingController.clear(),
+            icon: Icon(Icons.clear, color: Colors.white70,),
           ),
-          textInputAction: TextInputAction.search,
+          border: InputBorder.none,
+          hintText: 'Search',
         ),
+        textInputAction: TextInputAction.search,
       ),
     );
   }

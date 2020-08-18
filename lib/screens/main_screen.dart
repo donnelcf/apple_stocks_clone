@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:stocks_app_clone/widgets/search_bar.dart';
 import 'package:stocks_app_clone/widgets/search_results.dart';
 
@@ -10,6 +11,13 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+  String _getDate() {
+    final now = new DateTime.now();
+    String formatter = DateFormat.MMMMd('en_US').format(now);
+    return formatter;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -20,17 +28,31 @@ class _MainScreenState extends State<MainScreen> {
     return MaterialApp(
       title: 'Stock Search',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primaryColor: Colors.white,
+        scaffoldBackgroundColor: Colors.black
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Stocks'),
-        ),
-        body: Column(
-          children: [
-            SearchBar(),
-            SearchResults(),
-          ],
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 12.0, left: 12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 80,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Stocks", style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),),
+                      Text(_getDate(), style: TextStyle(color: Colors.white70, fontSize: 22, fontWeight: FontWeight.normal),),
+                    ],
+                  ),
+                ),
+                SearchBar(),
+                SearchResults(),
+              ],
+            ),
+          ),
         ),
       ),
     );

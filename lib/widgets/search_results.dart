@@ -27,7 +27,7 @@ class _SearchResultsState extends State<SearchResults> {
         future: context.watch<SearchState>().searchResults,
         builder: (context, snapshot) {
           if (snapshot.connectionState.index == 0){
-            return Center(child: Text("Lets find some stocks..."));
+            return Center(child: Text("Lets find some stocks...", style: TextStyle(color: Colors.white)));
           } else if (snapshot.hasData && snapshot.connectionState.index == 3) {
             return new ListView.builder
               (
@@ -35,14 +35,14 @@ class _SearchResultsState extends State<SearchResults> {
                 itemBuilder: (BuildContext context, int index) {
                   SearchQuote quote = snapshot.data[index];
                   return new ListTile(
-                    title: Text(quote.symbol),
-                    subtitle: quote.longName != 'null' ? Text(quote.longName) : quote.shortName != 'null' ? Text(quote.shortName) : Container(),
-                    trailing: Text(quote.quoteType + " - " + quote.exchange),
+                    title: Text(quote.symbol, style: TextStyle(color: Colors.white),),
+                    subtitle: quote.longName != 'null' ? Text(quote.longName, style: TextStyle(color: Colors.white70)) : quote.shortName != 'null' ? Text(quote.shortName, style: TextStyle(color: Colors.white70)) : Container(),
+                    trailing: Text(quote.quoteType + " - " + quote.exchange, style: TextStyle(color: Colors.white)),
                   );
                 }
             );
           } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
+            return Center(child: Text("${snapshot.error}", style: TextStyle(color: Colors.white)));
           }
           return Center(child: CircularProgressIndicator());
         },
