@@ -20,7 +20,7 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   _sendSearch() {
-    if(_textEditingController.value.selection.baseOffset != 0) {
+    if(_textEditingController.value.selection.baseOffset != 0 && _textEditingController.text != '') {
       context.read<SearchState>().search(_textEditingController.text);
     } else {
       context.read<SearchState>().clear();

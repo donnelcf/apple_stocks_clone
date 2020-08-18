@@ -27,7 +27,7 @@ class _SearchResultsState extends State<SearchResults> {
         future: context.watch<SearchState>().searchResults,
         builder: (context, snapshot) {
           if (snapshot.connectionState.index == 0){
-            return Center(child: Text("Lets find some stocks...", style: TextStyle(color: Colors.white)));
+            return Center(child: Text("Lets find some stocks...", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)));
           } else if (snapshot.hasData && snapshot.connectionState.index == 3) {
             return new ListView.builder
               (

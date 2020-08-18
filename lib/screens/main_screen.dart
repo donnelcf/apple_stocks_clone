@@ -44,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Stocks", style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),),
-                      Text(_getDate(), style: TextStyle(color: Colors.white70, fontSize: 22, fontWeight: FontWeight.normal),),
+                      Text(_getDate(), style: TextStyle(color: Colors.white70, fontSize: 22, fontWeight: FontWeight.bold),),
                     ],
                   ),
                 ),
